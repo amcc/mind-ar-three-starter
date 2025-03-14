@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="control">
+        <div id="camera-control">
+          <div id="start-stop">
+            <button id="startButton">Start</button>
+            <button id="stopButton">Stop</button>
+            <button id="switchButton">Switch</button>
+          </div>
+
+          <div>
+            Front Camera<br />
+            <select id="frontCameraDeviceSelect">
+              <option value="">Default</option>
+            </select>
+            Back Camera<br />
+            <select id="backCameraDeviceSelect">
+              <option value="">Default</option>
+            </select>
+          </div>
+        </div>
+        <div id="settings">
+          <p>change a setting and hit enter</p>
+          <div>
+            <label for="filterMinCF">filterMinCF</label>
+            <input type="number" id="filterMinCF" value="0.001" min="0" />
+          </div>
+          <div>
+            <label for="filterBeta">filterBeta</label>
+            <input type="number" id="filterBeta" value="0.001" min="0" />
+          </div>
+          <div>
+            <label for="missTolerance">missTolerance</label>
+            <input type="number" id="missTolerance" value="10" min="0" />
+          </div>
+          <div>
+            <label for="warmupTolerance">warmupTolerance</label>
+            <input type="number" id="warmupTolerance" value="10" min="0" />
+          </div>
+          <p>
+            suggested default settings (jittery):<br />
+            filterMinCF: 1, filterBeta: 10000
+          </p>
+          <p>
+            original settings from first test:<br />
+            filterMinCF: 0.001 filterBeta=10000
+          </p>
+          <p>
+            less jittery less drunk:<br />
+            filterMinCF: 0.001, filterBeta:0.01
+          </p>
+          <p>tolerances could be set to zero</p>
+        </div>
+      </div>
+
+      <div id="container"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
