@@ -17,6 +17,7 @@ const backCameraDeviceSelect = document.querySelector(
   "#backCameraDeviceSelect"
 );
 
+// set a box thickness to use later
 const boxThickness = 0.2;
 
 let mindarThree = null;
@@ -29,13 +30,13 @@ const setup = () => {
     ? backCameraDeviceSelect.value
     : undefined;
 
-  console.log("setup:", userDeviceId, environmentDeviceId);
+  // console.log("setup:", userDeviceId, environmentDeviceId);
 
+  // get default values from inputs
   const filterMinCF = document.querySelector("#filterMinCF").value;
   const filterBeta = document.querySelector("#filterBeta").value;
   const missTolerance = document.querySelector("#missTolerance").value;
   const warmupTolerance = document.querySelector("#warmupTolerance").value;
-  console.log("filterMinCF", filterMinCF);
 
   mindarThree = new MindARThree({
     container: document.querySelector("#container"),
@@ -48,6 +49,7 @@ const setup = () => {
     environmentDeviceId,
   });
 
+  // original code from the docs
   // mindarThree = new MindARThree({
   //   container: document.querySelector("#container"),
   //   imageTargetSrc: "/target.mind",
@@ -58,6 +60,7 @@ const setup = () => {
   //   userDeviceId,
   //   environmentDeviceId,
   // });
+
   const anchor = mindarThree.addAnchor(0);
   const geometry = new THREE.BoxGeometry(1, 1, boxThickness);
   const material = new THREE.MeshBasicMaterial({
@@ -70,6 +73,7 @@ const setup = () => {
   anchor.group.add(plane);
 };
 
+// if any input value is changed for mindAR settings then do this
 const restartMindarThree = () => {
   mindarThree.stop();
   mindarThree.renderer.setAnimationLoop(null);
@@ -153,36 +157,3 @@ navigator.mediaDevices
   .catch(function (err) {
     console.log(err.name + ": " + err.message);
   });
-
-// const mindarThree = new MindARThree({
-//   container: document.querySelector("#container"),
-//   imageTargetSrc:
-//     "https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind",
-// });
-// const { renderer, scene, camera } = mindarThree;
-// const anchor = mindarThree.addAnchor(0);
-// const geometry = new THREE.PlaneGeometry(1, 0.55);
-// const material = new THREE.MeshBasicMaterial({
-//   color: 0x00ffff,
-//   transparent: true,
-//   opacity: 0.5,
-// });
-// const plane = new THREE.Mesh(geometry, material);
-// anchor.group.add(plane);
-// const start = async () => {
-//   await mindarThree.start();
-//   renderer.setAnimationLoop(() => {
-//     renderer.render(scene, camera);
-//   });
-//   console.log("started");
-// };
-// const startButton = document.querySelector("#startButton");
-// const stopButton = document.querySelector("#stopButton");
-// startButton.addEventListener("click", () => {
-//   console.log("start");
-//   start();
-// });
-// stopButton.addEventListener("click", () => {
-//   mindarThree.stop();
-//   mindarThree.renderer.setAnimationLoop(null);
-// });
