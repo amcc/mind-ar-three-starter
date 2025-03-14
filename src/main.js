@@ -2,7 +2,11 @@ import * as THREE from "three";
 
 // import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 
-// import { MindARThree } from "mindar-image-three";
+// the above commented out line is from the docs for mindAR
+// however there's an error with more recent versions of three.js, so the below line is a fix from a pull
+// request on the mindAR github, the imported file has a few updates to fix the error
+// here's the issue/pull request:
+// https://github.com/hiukim/mind-ar-js/pull/503
 
 import { MindARThree } from "./components/mind-ar-srgb-encoding-fix/src/image-target/three.js";
 
